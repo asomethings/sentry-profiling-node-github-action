@@ -1,4 +1,4 @@
-FROM node:22.6-alpine
+FROM node:22.8-alpine3.20
 
 ENV TZ="Asia/Seoul"
 
@@ -8,7 +8,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
-RUN apk add --no-cache libc6-compat valgrind
+RUN apk add --no-cache valgrind
 
 RUN apk update
 
@@ -16,6 +16,6 @@ COPY . /app
 
 WORKDIR /app
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --ignore-scripts
+RUN pnpm install --prod
 
-RUN valgrind -v node /app/node_modules/.pnpm/@sentry+profiling-node@8.29.0/node_modules/@sentry/profiling-node/scripts/check-build.js
+RUN node /app/node_modules/.pnpm/@sentry+profiling-node@8.29.0/node_modules/@sentry/profiling-node/scripts/check-build.js
