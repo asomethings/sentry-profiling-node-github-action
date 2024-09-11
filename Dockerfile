@@ -1,4 +1,4 @@
-FROM node:22.8-alpine3.20
+FROM node:22.6-alpine3.20
 
 ENV TZ="Asia/Seoul"
 
