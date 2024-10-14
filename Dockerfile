@@ -18,4 +18,4 @@ WORKDIR /app
 
 RUN pnpm install --prod
 
-RUN node /app/node_modules/.pnpm/@sentry+profiling-node@8.29.0/node_modules/@sentry/profiling-node/scripts/check-build.js
+RUN node /app/node_modules/.pnpm/@sentry+profiling-node@8.34.0/node_modules/@sentry/profiling-node/scripts/check-build.js
